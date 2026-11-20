@@ -1,0 +1,34 @@
+// use prisma-8
+
+
+model Movie {
+  id             String   @id @onCreate(uuid())
+  title          String   @unique
+  releaseYear    Int
+  runtimeMinutes Int
+  watched        Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @onUpdate(now())
+
+  prerequisites MoviePrerequisite[] @relation("dependent")
+  dependents    MoviePrerequisite[] @relation("prerequisite")
+}
+
+model MoviePrerequisite {
+  movieId        String
+  prerequisiteId String
+  movie          Movie  @relation("dependent",    fields: [movieId],        references: [id], onDelete: Cascade)
+  prerequisite   Movie  @relation("prerequisite", fields: [prerequisiteId], references: [id], onDelete: Cascade)
+
+  @@id([movieId, prerequisiteId])
+  @@index([movieId])
+  @@index([prerequisiteId])
+}
+
+model Cinema {
+  id          String   @id @onCreate(uuid())
+  name        String   @unique
+  bundleSizes Int[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @onUpdate(now())
+}
