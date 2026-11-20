@@ -1,6 +1,6 @@
 import { createApp } from './app';
 import { config } from './app/lib/config';
-import { db } from '@prisma/db';
+import { db } from '@/app/lib/db';
 
 async function main() {
   const app = createApp();

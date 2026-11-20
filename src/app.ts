@@ -5,7 +5,7 @@ import { errorHandler } from './app/middleware/error-handler';
 // import { movieRouter } from './app/module/movie/movie.routes';
 // import { cinemaRouter } from './app/module/cinema/cinema.routes';
 import { dbHealthBreaker } from './app/lib/circuit-breaker';
-import { db } from '@prisma/db';
+import { db } from '@/app/lib/db';
 // import { registerMovieObservers } from './app/module/movie/movie.events';
 // import { registerCinemaObservers } from './app/module/cinema/cinema.events';
 

@@ -49,6 +49,6 @@
       "@prisma/*": ["./prisma/*"]
     }
   },
-  "include": ["src/**/*", "prisma/**/*", "prisma.config.ts", "prisma/db.ts"],
+  "include": ["src/**/*", "prisma/**/*", "prisma.config.ts", "src/app/lib/db.ts"],
   "exclude": ["node_modules", "dist", "prisma/migrations"]
 }
