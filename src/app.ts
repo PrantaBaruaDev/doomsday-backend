@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { requestLogger } from './app/middleware/request-logger';
 import { errorHandler } from './app/middleware/error-handler';
-// import { movieRouter } from './app/module/movie/movie.routes';
-// import { cinemaRouter } from './app/module/cinema/cinema.routes';
+import { movieRouter } from './app/module/movie/movie.routes';
+import { cinemaRouter } from './app/module/cinema/cinema.routes';
 import { dbHealthBreaker } from './app/lib/circuit-breaker';
 import { db } from '@/app/lib/db';
 // import { registerMovieObservers } from './app/module/movie/movie.events';
@@ -35,8 +35,8 @@ export function createApp() {
     }
   });
 
-  // app.use('/api/movies', movieRouter);
-  // app.use('/api/cinemas', cinemaRouter);
+  app.use('/api/movies', movieRouter);
+  app.use('/api/cinemas', cinemaRouter);
 
   app.use(errorHandler);
   return app;
